@@ -62,9 +62,6 @@
         <term HeuristID="1115-3474" StandardCode="">{Unknown}<description/></term>
       </lookup>
     </property>
-    <property name="Other (description)" type="freetext">
-      <description>Description of owner that does not fall into above categories</description>
-    </property>
     <property name="Location of raw material" type="enum">
       <description>Where the raw material is located</description>
       <lookup>
@@ -112,7 +109,7 @@
         <term HeuristID="1115-3486" StandardCode="">{V}<description>Triangle</description></term>
       </lookup>
     </property>
-    <property name="Ground edge " type="enum">
+    <property name="Ground edge" type="enum">
       <description>Select for ground edge attributes </description>
       <lookup>
         <term HeuristID="1115-3493" StandardCode="">{1}<description/></term>
@@ -152,7 +149,7 @@
     <property name="Other" type="blocktext">
       <description>other shaped not defined above</description>
     </property>
-    <property name="Shape " type="enum">
+    <property name="Shape" type="enum">
       <description>Shape of the tool</description>
       <lookup>
         <term HeuristID="1115-3538" StandardCode="">{Other_(please_describe)}<description/></term>
@@ -335,9 +332,6 @@
     </property>
     <property name="Preservation notes" type="blocktext">
       <description>Additional notes on preservation of the object if required</description>
-    </property>
-    <property name="Report1" type="blocktext">
-      <description>Report relating to this record</description>
     </property>
     <property name="Photo" type="file">
       <description>Photo</description>

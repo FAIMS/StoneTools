@@ -265,7 +265,7 @@
       <label>{User_List}</label>
       <group ref="usertab" faims_scrollable="false">
         <label>{User_List}</label>
-        <select1 appearance="compact" ref="users">
+        <select1 appearance="compact" scrollable="false" ref="users">
           <label>{Users}: If you don't see your name, contact Alice</label>
           <item>
             <label>placeholder</label>
@@ -276,7 +276,7 @@
     </group>
     <group ref="control">
       <label/>
-      <group ref="collection">
+      <group ref="collection" faims_scrollable="false">
         <label>Collections</label>
         <trigger ref="newCollection">
           <label>New Collection</label>
@@ -289,7 +289,7 @@
           </item>
         </select1>
       </group>
-      <group ref="artefact">
+      <group ref="artefact" faims_scrollable="false">
         <label>Artefacts</label>
         <select1 appearance="compact" ref="ArtefactList">
           <label>Artefacts:</label>
@@ -299,7 +299,7 @@
           </item>
         </select1>
       </group>
-      <group ref="report">
+      <group ref="report" faims_scrollable="false">
         <label>Reports</label>
         <select1 appearance="compact" ref="ReportList">
           <label>Reports:</label>
@@ -358,9 +358,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <input ref="Other_description_" faims_attribute_name="Other (description)" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Other_(description)}</label>
-        </input>
         <!--We would like to see Radiogroup-->
         <select1 ref="Location_of_raw_material" faims_attribute_name="Location of raw material" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Is_the_raw_material}</label>
@@ -411,7 +408,7 @@
           </item>
         </select1>
         <!--We would like to see Dropdown-->
-        <select1 ref="Ground_edge_" faims_attribute_name="Ground edge " faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
+        <select1 ref="Ground_edge_" faims_attribute_name="Ground edge" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Ground_edge_}</label>
           <item>
             <label>placeholder</label>
@@ -454,7 +451,7 @@
           <label>{Other}</label>
         </input>
         <!--We would like to see Dropdown-->
-        <select1 ref="Shape_" faims_attribute_name="Shape " faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
+        <select1 ref="Shape_" faims_attribute_name="Shape" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Shape_}</label>
           <item>
             <label>placeholder</label>
@@ -639,9 +636,6 @@
       </group>
       <group ref="Artefact_Other_information">
         <label>{Other_information}</label>
-        <input ref="Report1" faims_attribute_name="Report1" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Report1}</label>
-        </input>
       </group>
       <group ref="Artefact_Visual_interptretation">
         <label>{Visual,_interptretation}</label>
@@ -737,12 +731,12 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Collection_Artefacts">
+      <group ref="Collection_Artefacts" faims_scrollable="false">
         <label>Artefacts</label>
         <trigger ref="newArtefact">
           <label>New Artefact</label>
         </trigger>
-        <select1 appearance="compact" ref="ArtefactList">
+        <select1 appearance="compact" ref="ArtefactList" faims_certainty="false">
           <label>Artefacts in collection:</label>
           <item>
             <label>placeholder</label>
