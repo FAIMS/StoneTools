@@ -55,7 +55,6 @@
             </Artefact_Administrative>
             <Artefact_Description>
               <Raw_material/>
-              <Other_description_/>
               <Location_of_raw_material/>
               <Width/>
               <Width_max/>
@@ -152,6 +151,7 @@
               <Organisation/>
               <Identity/>
               <Other_description_/>
+              <Update/>
             </Collection_GeneralInformation>
             <Collection_Location>
               <Address/>
@@ -160,12 +160,16 @@
               <attachThumbnail_image/>
               <viewattached/>
               <Update/>
-              <Delete/>
             </Collection_Location>
             <Collection_Owner>
               <Attitude_of_owner/>
               <Contact_details/>
+              <Update/>
             </Collection_Owner>
+            <Collection_Artefacts>
+              <newArtefact/>
+              <ArtefactList/>
+            </Collection_Artefacts>
           </Collection>
           <!--ArchEnt / Record Type: REPORT-->
           <Report>
@@ -694,16 +698,17 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <input ref="Other_description_" faims_attribute_name="Other (description)" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Other_(description)}</label>
-        </input>
+        
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Collection_Location">
         <label>{Location_}</label>
         <input ref="Address" faims_attribute_name="Address / Location" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Address/_Location}</label>
         </input>
-        <input ref="Summary" faims_attribute_name="Summary" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+        <input ref="Summary" faims_attribute_name="Summary of collection" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Short_summary}</label>
         </input>
         <select ref="Thumbnail_image" faims_attribute_name="Picture of collection" faims_certainty="true" faims_attribute_type="freetext" faims_sync="true" type="camera" faims_annotation="false">
@@ -719,18 +724,31 @@
         <trigger ref="Update">
           <label>{Save_Record}</label>
         </trigger>
-        <trigger ref="Delete">
-          <label>{Delete_Record}</label>
-        </trigger>
       </group>
       <group ref="Collection_Owner">
-        <label/>
+        <label>Owner</label>
         <input ref="Attitude_of_owner" faims_attribute_name="Attitude of owner" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Attitude_of_owner}</label>
         </input>
         <input ref="Contact_details" faims_attribute_name="Contact details" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Contact_details}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
+      </group>
+      <group ref="Collection_Artefacts">
+        <label>Artefacts</label>
+        <trigger ref="newArtefact">
+          <label>New Artefact</label>
+        </trigger>
+        <select1 appearance="compact" ref="ArtefactList">
+          <label>Artefacts in collection:</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
       </group>
     </group>
     <!--REPORT-->

@@ -11,11 +11,13 @@ setSyncEnabled(true);
 setFileSyncEnabled(true);
 
 showWarning("Thanks for trying this module!", "We have provided this module for Demonstration purposes only. You can customise the module yourself or we can help you. Contact info@fedarch.org for help.");
-
+onEvent("control", "show", "refreshCollections()");
+onEvent("control", "show", "refreshArtefacts()");
+onEvent("control", "show", "refreshReports()");
 
 /*** control ***/
 
-onEvent("control/artefact", "show", "refreshArtefacts()");
+// onEvent("control/artefact", "show", "refreshArtefacts()");
 
 /*** ArchEnt: Artefact ***/
 refreshArtefacts() {
@@ -109,7 +111,7 @@ updateAllArtefact(){
 }      
 
 /*** ArchEnt: Collection ***/
-onEvent("control/collection", "show", "refreshCollections()");
+// onEvent("control/collection", "show", "refreshCollections()");
 refreshCollections() {
     showToast("Fetching saved contexts...");
     populateList("control/collection/CollectionList", fetchEntityList("Collection"));
@@ -119,8 +121,11 @@ onEvent("control/collection/CollectionList", "click", "loadCollection()");
 onEvent("control/collection/newCollection", "click", "newCollection()");
 
 onEvent("Collection/Collection_Location/attachThumbnail_image", "click", "attachPictureTo(\"Collection/Collection_Location_/Thumbnail_image\")");
+onEvent("Collection/Collection_GeneralInformation/Update", "delayclick", "saveCollection()");
 onEvent("Collection/Collection_Location/Update", "delayclick", "saveCollection()");
-onEvent("Collection/Collection_Location/Delete", "delayclick", "deleteCollection()");
+onEvent("Collection/Collection_Owner/Update", "delayclick", "saveCollection()");
+
+onEvent("Collection/Collection_Artefacts/newArtefact", "click", "newArtefact()");
 
 String collection_id = null;
 
@@ -173,16 +178,19 @@ doNotDeleteCollection(){
 }       
  
 loadCollectionAttributes(){
-
-populateDropDown("Collection/Collection_GeneralInformation/Identity", makeVocab("Identity"));
+    populateDropDown("Collection/Collection_GeneralInformation/Identity", makeVocab("Identity"));
 }
 
+/*
+    TODO: load artefacts linked to the collection
+*/
 updateAllCollection(){
+    populateList("Collection/Collection_Artefacts/ArtefactList",  fetchEntityList("Artefact"));
 //load related records ?
 }      
 
 /*** ArchEnt: Report ***/
-onEvent("control/report", "show", "refreshReports()");
+// onEvent("control/report", "show", "refreshReports()");
 refreshReports() {
     showToast("Fetching saved contexts...");
     populateList("control/report/ReportList", fetchEntityList("Report"));
@@ -254,6 +262,15 @@ updateAllReport(){
 }      
 
 // MISC FUNCTIONS    
+
+saveEntitiesToRel(type, entity1, entity2) {
+    if (isNull(entity1) || isNull(entity2)) return;
+
+    rel_id = saveRel(null, type, null, null);
+    addReln(entity1, rel_id, null);
+    addReln(entity2, rel_id, null);
+}
+
 makeVocab(String attrib){
     Object a = fetchAll("select vocabid, vocabname from vocabulary join attributekey using (attributeid) where attributename = '"+attrib+"' ");
     return a;
@@ -272,6 +289,8 @@ populateListForUsers(){
 }
 
 populateListForUsers();
+
+
 
 String username = "";
 String device = "";
