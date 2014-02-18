@@ -385,17 +385,14 @@
     <property name="Other (description)" type="freetext">
       <description>Description of owner that does not fall into above categories</description>
     </property>
-    <property name="Access road" type="freetext">
-      <description>Describe how you access the site (Municipal road,muletrack,accross the field)</description>
+    <property name="Address / Location" type="freetext">
+      <description>Preferably enter the address, if no address, an accurate description of the collection’s location)</description>
     </property>
-    <property name="Short summary" type="blocktext">
-      <description>Short summary, typically used in annotated listings, information popups and so forth. Aim for 100 - 200 words.</description>
+    <property name="Summary of collection" type="blocktext">
+      <description>A short summary of the collection describing how the items are stored</description>
     </property>
-    <property name="Thumbnail image" type="file">
+    <property name="Picture of collection" type="file">
       <description>An image of approx. 200 pixels wide used to represent the record in search results and other compact listings</description>
-    </property>
-    <property name="Related file" type="file">
-      <description>An uploaded file or a reference to a file through a URI</description>
     </property>
     <property name="Attitude of owner" type="blocktext">
       <description>Information on the attitude of owner </description>

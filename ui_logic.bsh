@@ -20,11 +20,10 @@ onEvent("control/artefact", "show", "refreshArtefacts()");
 /*** ArchEnt: Artefact ***/
 refreshArtefacts() {
     showToast("Fetching saved contexts...");
-    populateList("control/data/ArtefactList", fetchEntityList("Artefact"));
+    populateList("control/artefact/ArtefactList", fetchEntityList("Artefact"));
 }
 
-onEvent("control/data/ArtefactList", "click", "loadArtefact()");
-onEvent("control/data/newArtefact", "click", "newArtefact()");
+onEvent("control/artefact/ArtefactList", "click", "loadArtefact()");
 
 onEvent("Artefact/Artefact_Visual_interptretation/attachPhoto", "click", "attachPictureTo(\"Artefact/Artefact_Visual_interptretation/Photo\")");
 onEvent("Artefact/Artefact_Visual_interptretation/attachDrawing", "click", "attachFileTo(\"Artefact/Artefact_Visual_interptretation/Drawing\")");
@@ -113,15 +112,13 @@ updateAllArtefact(){
 onEvent("control/collection", "show", "refreshCollections()");
 refreshCollections() {
     showToast("Fetching saved contexts...");
-    populateList("control/data/CollectionList", fetchEntityList("Collection"));
+    populateList("control/collection/CollectionList", fetchEntityList("Collection"));
 }
 
-onEvent("control/data/CollectionList", "click", "loadCollection()");
-onEvent("control/data/newCollection", "click", "newCollection()");
+onEvent("control/collection/CollectionList", "click", "loadCollection()");
+onEvent("control/collection/newCollection", "click", "newCollection()");
 
 onEvent("Collection/Collection_Location/attachThumbnail_image", "click", "attachPictureTo(\"Collection/Collection_Location_/Thumbnail_image\")");
-onEvent("Collection/Collection_Location/attachRelated_file", "click", "attachFileTo(\"Collection/Collection_Location_/Related_file\")");
-onEvent("Collection/Collection_Location/viewattached", "click", "viewArchEntAttachedFiles(entityId)");
 onEvent("Collection/Collection_Location/Update", "delayclick", "saveCollection()");
 onEvent("Collection/Collection_Location/Delete", "delayclick", "deleteCollection()");
 
@@ -188,11 +185,10 @@ updateAllCollection(){
 onEvent("control/report", "show", "refreshReports()");
 refreshReports() {
     showToast("Fetching saved contexts...");
-    populateList("control/data/ReportList", fetchEntityList("Report"));
+    populateList("control/report/ReportList", fetchEntityList("Report"));
 }
 
-onEvent("control/data/ReportList", "click", "loadReport()");
-onEvent("control/data/newReport", "click", "newReport()");
+onEvent("control/report/ReportList", "click", "loadReport()");
 
 onEvent("Report/Report_Digital_versions/attachRelated_file", "click", "attachFileTo(\"Report/Report_Digital_versions/Related_file\")");
 onEvent("Report/Report_Digital_versions/viewattached", "click", "viewArchEntAttachedFiles(entityId)");

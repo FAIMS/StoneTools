@@ -155,18 +155,18 @@
               <Other_description_/>
             </Collection_GeneralInformation>
             <Collection_Location>
-              <Access_road/>
-              <Short_summary/>
+              <Address/>
+              <Summary/>
               <Thumbnail_image/>
               <attachThumbnail_image/>
-              <Related_file/>
-              <attachRelated_file/>
-              <Attitude_of_owner/>
-              <Contact_details/>
               <viewattached/>
               <Update/>
               <Delete/>
             </Collection_Location>
+            <Collection_Owner>
+              <Attitude_of_owner/>
+              <Contact_details/>
+            </Collection_Owner>
           </Collection>
           <!--ArchEnt / Record Type: REPORT-->
           <Report>
@@ -234,9 +234,9 @@
       <bind nodeset="/faims/Artefact/Artefact_Preservation/Storage" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Preservation/Preservation_notes" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Other_information/Report1" type="string"/>
-      <bind nodeset="/faims/Collection/Collection_Location/Short_summary" type="string"/>
-      <bind nodeset="/faims/Collection/Collection_Location/Attitude_of_owner" type="string"/>
-      <bind nodeset="/faims/Collection/Collection_Location/Contact_details" type="string"/>
+      <bind nodeset="/faims/Collection/Collection_Location/Summary" type="string"/>
+      <bind nodeset="/faims/Collection/Collection_Owner/Attitude_of_owner" type="string"/>
+      <bind nodeset="/faims/Collection/Collection_Owner/Contact_details" type="string"/>
       <bind nodeset="/faims/Report/Report_Additional/Abstract" type="string"/>
       <bind nodeset="/faims/Report/Report_Additional/Short_summary" type="string"/>
     </model>
@@ -278,7 +278,7 @@
           <label>New Collection</label>
         </trigger>
         <select1 appearance="compact" ref="CollectionList">
-          <label>Collections</label>
+          <label>Collections:</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
@@ -286,8 +286,9 @@
         </select1>
       </group>
       <group ref="artefact">
+        <label>Artefacts</label>
         <select1 appearance="compact" ref="ArtefactList">
-          <label>Artefacts</label>
+          <label>Artefacts:</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
@@ -295,8 +296,9 @@
         </select1>
       </group>
       <group ref="report">
+        <label>Reports</label>
         <select1 appearance="compact" ref="ReportList">
-          <label>Reports</label>
+          <label>Reports:</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
@@ -698,13 +700,13 @@
       </group>
       <group ref="Collection_Location">
         <label>{Location_}</label>
-        <input ref="Access_road" faims_attribute_name="Access road" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+        <input ref="Address" faims_attribute_name="Address / Location" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Address/_Location}</label>
         </input>
-        <input ref="Short_summary" faims_attribute_name="Short summary" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+        <input ref="Summary" faims_attribute_name="Summary" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Short_summary}</label>
         </input>
-        <select ref="Thumbnail_image" faims_attribute_name="Thumbnail image" faims_certainty="true" faims_attribute_type="freetext" faims_sync="true" type="camera" faims_annotation="false">
+        <select ref="Thumbnail_image" faims_attribute_name="Picture of collection" faims_certainty="true" faims_attribute_type="freetext" faims_sync="true" type="camera" faims_annotation="false">
           <label>{Image_of_collection/_location}</label>
           <item>
             <label>placeholder</label>
@@ -714,31 +716,20 @@
         <trigger ref="attachThumbnail_image">
           <label>Take Picture</label>
         </trigger>
-        <select ref="Related_file" faims_attribute_name="Related file" faims_certainty="true" faims_attribute_type="freetext" type="file" faims_annotation="false">
-          <label>{Other_files_and_images}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select>
-        <trigger ref="attachRelated_file">
-          <label>Attach File</label>
-        </trigger>
-        <input ref="Attitude_of_owner" faims_attribute_name="Attitude of owner" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Attitude_of_owner}</label>
-        </input>
-        <input ref="Contact_details" faims_attribute_name="Contact details" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Contact_details}</label>
-        </input>
-        <trigger ref="viewattached">
-          <label>View Attached Files</label>
-        </trigger>
         <trigger ref="Update">
           <label>{Save_Record}</label>
         </trigger>
         <trigger ref="Delete">
           <label>{Delete_Record}</label>
         </trigger>
+      </group>
+      <group ref="Collection_Owner">
+        <input ref="Attitude_of_owner" faims_attribute_name="Attitude of owner" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+          <label>{Attitude_of_owner}</label>
+        </input>
+        <input ref="Contact_details" faims_attribute_name="Contact details" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+          <label>{Contact_details}</label>
+        </input>
       </group>
     </group>
     <!--REPORT-->
