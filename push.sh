@@ -1,5 +1,5 @@
 #!/bin/bash
-
-`adb push ui_schema.xml /sdcard/faims/modules/237cb62e-2b57-46f2-92a0-917a012a4136/ui_schema.xml`
-`adb push data_schema.xml /sdcard/faims/modules/237cb62e-2b57-46f2-92a0-917a012a4136/data_schema.xml`
-`adb push ui_logic.bsh /sdcard/faims/modules/237cb62e-2b57-46f2-92a0-917a012a4136/ui_logic.bsh`
+uuid="bbd7f0d9-726e-42df-9e8d-229dc5c42cfb"
+`adb push ui_schema.xml /sdcard/faims/modules/$uuid/ui_schema.xml`
+`adb push data_schema.xml /sdcard/faims/modules/$uuid/data_schema.xml`
+`adb push ui_logic.bsh /sdcard/faims/modules/$uuid/ui_logic.bsh`

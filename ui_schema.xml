@@ -26,7 +26,6 @@
           <!--control tabgroup that contains button to manipulate entities: load, list, create-->
           <control>
             <buttonholder>
-              <Person/>
               <Artefact/>
               <Collection/>
               <Report/>
@@ -272,6 +271,7 @@
       </group>
     </group>
     <group ref="control">
+      <label/>
       <group ref="collection">
         <label>Collections</label>
         <trigger ref="newCollection">
@@ -724,6 +724,7 @@
         </trigger>
       </group>
       <group ref="Collection_Owner">
+        <label/>
         <input ref="Attitude_of_owner" faims_attribute_name="Attitude of owner" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Attitude_of_owner}</label>
         </input>
