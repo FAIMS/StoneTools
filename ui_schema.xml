@@ -44,16 +44,12 @@
           <!--list of tabgroups for entities-->
           <!--ArchEnt / Record Type: ARTEFACT-->
           <Artefact>
-            <Artefact_GeneralInformation/>
-            <Artefact_Administrative>
-              <Date/>
+            <Artefact_Description>
               <Inventory_Number/>
               <Other_ID/>
               <Artefact_Classification/>
               <Artefact_type_other/>
               <Completeness/>
-            </Artefact_Administrative>
-            <Artefact_Description>
               <Raw_material/>
               <Location_of_raw_material/>
               <Width/>
@@ -109,12 +105,6 @@
               <Attributes/>
               <Notes_attributes/>
             </Artefact_Attributes_other>
-            <Artefact_Person_who_found_the_object>
-              <Contact_details/>
-              <Activity/>
-              <Date_found/>
-              <Other_information/>
-            </Artefact_Person_who_found_the_object>
             <Artefact_Provenance>
               <Name_of_locality_where_found/>
               <Location_description/>
@@ -123,6 +113,9 @@
               <Geological_substrate/>
               <cadestral_reference_information/>
               <Notes/>
+              <Contact_details/>
+              <Activity/>
+              <Date_found/>
             </Artefact_Provenance>
             <Artefact_Preservation>
               <Condition_of_object/>
@@ -130,9 +123,6 @@
               <Storage/>
               <Preservation_notes/>
             </Artefact_Preservation>
-            <Artefact_Other_information>
-              <Report1/>
-            </Artefact_Other_information>
             <Artefact_Visual_interptretation>
               <Photo/>
               <attachPhoto/>
@@ -314,14 +304,8 @@
     <!--ARTEFACT-->
     <group ref="Artefact" faims_archent_type="Artefact">
       <label>{Artefact}</label>
-      <group ref="Artefact_GeneralInformation">
-        <label>Gen</label>
-      </group>
-      <group ref="Artefact_Administrative">
-        <label>{Administrative}</label>
-        <input ref="Date" faims_attribute_name="Date" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Date}</label>
-        </input>
+      <group ref="Artefact_Description">
+        <label>{Description}</label>
         <input ref="Inventory_Number" faims_attribute_name="Inventory Number" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Inventory_Number}</label>
         </input>
@@ -347,9 +331,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-      </group>
-      <group ref="Artefact_Description">
-        <label>{Description}</label>
         <!--We would like to see Dropdown-->
         <select1 ref="Raw_material" faims_attribute_name="Raw material" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Raw_material}</label>
@@ -550,26 +531,6 @@
           <label>{Notes_attributes}</label>
         </input>
       </group>
-      <group ref="Artefact_Person_who_found_the_object">
-        <label>{Person_who_found_the_object}</label>
-        <input ref="Contact_details" faims_attribute_name="Contact details" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Name}</label>
-        </input>
-        <!--We would like to see Dropdown-->
-        <select1 ref="Activity" faims_attribute_name="Activity" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
-          <label>{Activity}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <input ref="Date_found" faims_attribute_name="Date found" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Date_found}</label>
-        </input>
-        <input ref="Other_information" faims_attribute_name="Other information" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Other_information}</label>
-        </input>
-      </group>
       <group ref="Artefact_Provenance">
         <label>{Provenance}</label>
         <input ref="Name_of_locality_where_found" faims_attribute_name="Name of locality where found" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
@@ -608,6 +569,20 @@
         <input ref="Notes" faims_attribute_name="Notes" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Notes}</label>
         </input>
+        <input ref="Contact_details" faims_attribute_name="Contact details" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+          <label>{Name}</label>
+        </input>
+        <!--We would like to see Dropdown-->
+        <select1 ref="Activity" faims_attribute_name="Activity" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
+          <label>{Activity}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+        <input ref="Date_found" faims_attribute_name="Date found" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+          <label>{Date_found}</label>
+        </input>
       </group>
       <group ref="Artefact_Preservation">
         <label>{Preservation}</label>
@@ -633,9 +608,6 @@
         <input ref="Preservation_notes" faims_attribute_name="Preservation notes" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Preservation_notes}</label>
         </input>
-      </group>
-      <group ref="Artefact_Other_information">
-        <label>{Other_information}</label>
       </group>
       <group ref="Artefact_Visual_interptretation">
         <label>{Visual,_interptretation}</label>
