@@ -402,6 +402,10 @@
     </property>
     <property name="Published" type="freetext" isIdentifier="true">
       <description>published</description>
+      <lookup>
+        <term HeuristID="1115-3595" StandardCode="">Published<description/></term>
+        <term HeuristID="1115-3521" StandardCode="">Unpublished<description/></term>
+      </lookup>
     </property>
     <property name="Held by" type="freetext">
       <description>held by</description>

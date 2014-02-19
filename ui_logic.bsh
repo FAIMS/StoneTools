@@ -15,6 +15,7 @@ onEvent("control", "show", "refreshCollections()");
 onEvent("control", "show", "refreshArtefacts()");
 onEvent("control", "show", "refreshReports()");
 onEvent("control", "show", "loadArtefactAttributes()");
+onEvent("control", "show", "loadReportAttributes()");
 
 
 /*** control ***/
@@ -27,7 +28,7 @@ refreshArtefacts() {
     populateList("control/artefact/ArtefactList", fetchEntityList("Artefact"));
 }
 
-onEvent("Artefact", "show", "hideTabs()");
+onEvent("Artefact", "show", "hideTabs();showTabCustom();");
 onEvent("control/artefact/ArtefactList", "click", "loadArtefact()");
 
 onEvent("Artefact/Artefact_Visual_interptretation/attachPhoto", "click", "attachPictureTo(\"Artefact/Artefact_Visual_interptretation/Photo\")");
@@ -103,6 +104,7 @@ loadArtefactFrom(entid) {
     if (isNull(entid)) return;
     showToast(entid);
     showTabGroup("Artefact", entid);
+    
     //updateRelns();
 }
 
@@ -184,6 +186,10 @@ updateAllArtefact(){
         "group by uuid\n"+
         "order by valuetimestamp desc, uuid, attributename;");
         populateList("Artefact/Artefact_Report/ReportList",  reportsInArtefact);
+    } else {
+        Object empty = fetchAll("select '', '';");
+        populateList("Artefact/Artefact_Report/ReportList",  empty);
+
     }
 //load related records ?
 }      
@@ -287,6 +293,10 @@ updateAllCollection(){
         "order by valuetimestamp desc, uuid, attributename;");
         print(artefactsInCollection);
         populateList("Collection/Collection_Artefacts/ArtefactList",  artefactsInCollection);
+    } else {
+        Object empty = fetchAll("select '', '';");
+        populateList("Collection/Collection_Artefacts/ArtefactList",  empty);
+
     }
 //load related records ?
 }      
@@ -307,7 +317,7 @@ String report_id = null;
 newReport(){
     report_id = null;
     newTabGroup("Report");
-    loadReportAttributes();
+    saveArtefact();
 }
 loadReport() {
     //newReport();
@@ -320,7 +330,6 @@ loadReportFrom(entid) {
     if (isNull(entid)) return;
     showToast(entid);
     showTabGroup("Report", entid);
-    loadReportAttributes();
     updateAllReport(); 
     //updateRelns();
 }
@@ -336,7 +345,16 @@ saveReport() {
         entity = fetchArchEnt(report_id);
     }
     // first null is map data
-    saveTabGroup("Report", report_id, null, null, "report_id = getLastSavedRecordId();");
+    saveTabGroup("Report", report_id, null, null, "makeArtefactReportReln();");
+}
+
+makeArtefactReportReln() {
+    report_id = getLastSavedRecordId(); 
+    if (isNull(report_id) || isNull(artefact_id)) {
+        showToast("Artefact ID or Report ID doesn't exist");
+        return;
+    }
+    saveEntitiesToRel("ArtefactReport", artefact_id, report_id);
 }
 
 deleteReport(){
@@ -353,6 +371,7 @@ doNotDeleteReport(){
 }       
  
 loadReportAttributes(){
+    populateRadioGroup("Report/Report/Published", makeVocab("Published"));
 
 }
 
