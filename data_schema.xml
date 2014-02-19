@@ -34,9 +34,9 @@
         <term HeuristID="1115-3436" StandardCode="">{Flake}<description>Piece flaked off another rock</description></term>
         <term HeuristID="1115-3437" StandardCode="">{Core}<description>Rock from which flakes are removed</description></term>
         <term HeuristID="1115-3438" StandardCode="">{Other_(describe)}<description>Another tool not represented in this list</description></term>
-        <term HeuristID="1115-3439" StandardCode="">{Unknown}<description>Unsure how to classify this object</description></term>
+        <term HeuristID="1115-3439" StandardCode="">Unknown<description>Unsure how to classify this object</description></term>
         <term HeuristID="1115-3440" StandardCode="">{Not_an_artefact_}<description>Not likely to be a cultural artefact</description></term>
-        <term HeuristID="1115-3440" StandardCode="">{Multiple_Uses_<description>Multiple Uses</description></term>
+        <term HeuristID="1115-3440" StandardCode="">{Multiple_Uses}<description>Multiple Uses</description></term>
       </lookup>
     </property>
     <property name="Artefact type - other" type="freetext">
@@ -394,38 +394,23 @@
   <!--REPORT-->
   <ArchaeologicalElement name="Report">
     <description>Any published or unpublished information on this collection</description>
-    <property name="Artefact type" type="freetext" isIdentifier="true">
-      <description>Classification of artefact </description>
+    <property name="Author" type="freetext" isIdentifier="true">
+      <description>Author</description>
     </property>
-    <property name="Date" type="date" isIdentifier="true">
-      <description>Enter a date either as a simple calendar date or through the temporal object popup (for complex/uncertain dates)</description>
-    </property>
-    <property name="Number of pages" type="freetext">
-      <description>Number of pages</description>
-    </property>
-    <property name="Report access" type="freetext">
-      <description>Where the report is held and how it can be accessed</description>
-    </property>
-    <property name="Abstract" type="blocktext">
-      <description>Abstract</description>
-    </property>
-    <property name="Short summary" type="blocktext">
-      <description>Short summary, typically used in annotated listings, information popups and so forth. Aim for 100 - 200 words.</description>
-    </property>
-    <property name="Short name" type="freetext">
-      <description>Short name or acronym, use this for common shortened names or acronyms, eg. ARC for Australian Research Council</description>
-    </property>
-    <property name="Title - alternate" type="freetext">
+    <property name="Title" type="freetext">
       <description>Title - alternate</description>
     </property>
-    <property name="DOI" type="freetext">
-      <description>DOI</description>
+    <property name="Published" type="freetext" isIdentifier="true">
+      <description>published</description>
     </property>
-    <property name="URL" type="freetext">
-      <description>The URL of a resource or web page</description>
+    <property name="Held by" type="freetext">
+      <description>held by</description>
     </property>
-    <property name="Related file" type="file">
-      <description>An uploaded file or a reference to a file through a URI</description>
+    <property name="Year of publication" type="freetext">
+      <description>Year of pubs</description>
+    </property>
+    <property name="Access requirements" type="blocktext">
+      <description>Access requirements</description>
     </property>
   </ArchaeologicalElement>
 </dataSchema>

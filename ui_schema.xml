@@ -174,28 +174,15 @@
           </Collection>
           <!--ArchEnt / Record Type: REPORT-->
           <Report>
-            <Report_GeneralInformation/>
-            <Report_Common>
-              <Artefact_type/>
-              <Date/>
-              <Number_of_pages/>
-              <Report_access/>
-            </Report_Common>
-            <Report_Additional>
-              <Abstract/>
-              <Short_summary/>
-              <Short_name/>
-              <Title_alternate/>
-            </Report_Additional>
-            <Report_Digital_versions>
-              <DOI/>
-              <URL/>
-              <Related_file/>
-              <attachRelated_file/>
-              <viewattached/>
+            <Report>
+              <Author/>
+              <Title/>
+              <Published/>
+              <Held_by/>
+              <Year_of_publication/>
+              <Access_requirements/>
               <Update/>
-              <Delete/>
-            </Report_Digital_versions>
+            </Report>
           </Report>
         </faims>
       </instance>
@@ -764,65 +751,32 @@
     <!--REPORT-->
     <group ref="Report" faims_archent_type="Report">
       <label>{Report}</label>
-      <group ref="Report_GeneralInformation">
-        <label>Gen</label>
-      </group>
-      <group ref="Report_Common">
-        <label>{Common}</label>
-        <input ref="Artefact_type" faims_attribute_name="Artefact type" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Title_of_report}</label>
+      <group ref="Report">
+        <label>Report</label>
+        <input ref="Author" faims_attribute_name="Author" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
+          <label>Author</label>
         </input>
-        <input ref="Date" faims_attribute_name="Date" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Date}</label>
+        <input ref="Title" faims_attribute_name="Title" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
+          <label>Title</label>
         </input>
-        <input ref="Number_of_pages" faims_attribute_name="Number of pages" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Number_of_pages}</label>
-        </input>
-        <input ref="Report_access" faims_attribute_name="Report access" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Report_access}</label>
-        </input>
-      </group>
-      <group ref="Report_Additional">
-        <label>{Additional}</label>
-        <input ref="Abstract" faims_attribute_name="Abstract" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Abstract}</label>
-        </input>
-        <input ref="Short_summary" faims_attribute_name="Short summary" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Short_summary}</label>
-        </input>
-        <input ref="Short_name" faims_attribute_name="Short name" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Title_-_short}</label>
-        </input>
-        <input ref="Title_alternate" faims_attribute_name="Title - alternate" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Title_-_alternate}</label>
-        </input>
-      </group>
-      <group ref="Report_Digital_versions">
-        <label>{Digital_versions}</label>
-        <input ref="DOI" faims_attribute_name="DOI" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{DOI}</label>
-        </input>
-        <input ref="URL" faims_attribute_name="URL" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{URL}</label>
-        </input>
-        <select ref="Related_file" faims_attribute_name="Related file" faims_certainty="true" faims_attribute_type="freetext" type="file" faims_annotation="false">
-          <label>{Related_files}</label>
+        <select1 ref="Published" faims_attribute_name="Published" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false" appearance="full">
+          <label>Published</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
-        </select>
-        <trigger ref="attachRelated_file">
-          <label>Attach File</label>
-        </trigger>
-        <trigger ref="viewattached">
-          <label>View Attached Files</label>
-        </trigger>
+        </select1>
+        <input ref="Held_by" faims_attribute_name="Held by" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+          <label>Held By</label>
+        </input>
+        <input ref="Year_of_publication" faims_attribute_name="Year of publication" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+          <label>Year of Publication</label>
+        </input>
+        <input ref="Access_requirements" faims_attribute_name="Access requirements" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+          <label>Access Requirements</label>
+        </input>
         <trigger ref="Update">
           <label>{Save_Record}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>{Delete_Record}</label>
         </trigger>
       </group>
     </group>
