@@ -746,10 +746,10 @@
         <input ref="Held_by" faims_attribute_name="Held by" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
           <label>Held By</label>
         </input>
-        <input ref="Year_of_publication" faims_attribute_name="Year of publication" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
+        <input ref="Year_of_publication" faims_attribute_name="Year of publication" faims_certainty="false" faims_attribute_type="measure" faims_read_only="false">
           <label>Year of Publication</label>
         </input>
-        <input ref="Access_requirements" faims_attribute_name="Access requirements" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+        <input ref="Access_requirements" faims_attribute_name="Access requirements" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
           <label>Access Requirements</label>
         </input>
         <trigger ref="Update">
