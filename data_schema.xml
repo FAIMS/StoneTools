@@ -400,7 +400,7 @@
     <property name="Title" type="freetext">
       <description>Title</description>
     </property>
-    <property name="Published" type="freetext" isIdentifier="true">
+    <property name="Published" type="freetext">
       <description>Published</description>
       <lookup>
         <term HeuristID="1115-3595" StandardCode="">Published<description/></term>
@@ -410,7 +410,7 @@
     <property name="Held by" type="freetext">
       <description>Held by</description>
     </property>
-    <property name="Year of publication" type="measure">
+    <property name="Year of publication" type="measure" isIdentifier="true">
       <description>Year of publication</description>
     </property>
     <property name="Access requirements" type="blocktext">

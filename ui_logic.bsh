@@ -196,9 +196,23 @@ saveArtefact() {
 
 makeCollectionArtefactReln() {
     artefact_id = getLastSavedRecordId(); 
-    if (isNull(artefact_id) || isNull(collection_id)) {
-        showToast("Artefact ID or Collection ID doesn't exist");
-        return;
+    if (isNull(collection_id)) {
+        colleciton_id = fetchOne("select uuid, aenttypename || ': ' || group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' | ') as response, valuetimestamp\n"+
+        "  FROM (  SELECT uuid, attributeid, vocabid, attributename, vocabname, measure, freetext, certainty, attributetype, valuetimestamp, aenttypename\n"+
+        "            FROM latestNonDeletedArchentIdentifiers\n"+
+        "           WHERE aenttypename = 'Collection'\n"+
+        "             AND uuid in (select uuid\n"+
+        "                            FROM latestNonDeletedAentReln\n"+
+        "                           where relationshipid in (select relationshipid\n"+
+        "                                                      FROM latestNonDeletedAentReln\n"+
+        "                                                      JOIN relationship using (relationshipid)\n"+
+        "                                                      JOIN relntype using (relntypeid)\n"+
+        "                                                     where uuid = "+artefact_id+"\n"+
+        "                                                       and relntypeName = 'CollecitonArtefact')\n"+
+        "                             and uuid != "+artefact_id+")\n"+
+        "        ORDER BY uuid, attributename ASC)\n"+
+        "group by uuid\n"+
+        "order by valuetimestamp desc, uuid, attributename;");
     }
     saveEntitiesToRel("CollectionArtefact", artefact_id, collection_id);
 }
@@ -277,7 +291,6 @@ loadReportFrom(entid) {
     report_id = entid;
     if (isNull(entid)) return;
     showTabGroup("Report", entid);
-    updateAllReport(); 
 }
 
 saveReport() {
@@ -295,9 +308,24 @@ saveReport() {
 
 makeArtefactReportReln() {
     report_id = getLastSavedRecordId(); 
-    if (isNull(report_id) || isNull(artefact_id)) {
-        showToast("Artefact ID or Report ID doesn't exist");
-        return;
+    if (isNull(artefact_id)) {
+        Object artefactElement = fetchOne("select uuid, aenttypename || ': ' || group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' | ') as response, valuetimestamp\n"+
+        "  FROM (  SELECT uuid, attributeid, vocabid, attributename, vocabname, measure, freetext, certainty, attributetype, valuetimestamp, aenttypename\n"+
+        "            FROM latestNonDeletedArchentIdentifiers\n"+
+        "           WHERE aenttypename = 'Artefact'\n"+
+        "             AND uuid in (select uuid\n"+
+        "                            FROM latestNonDeletedAentReln\n"+
+        "                           where relationshipid in (select relationshipid\n"+
+        "                                                      FROM latestNonDeletedAentReln\n"+
+        "                                                      JOIN relationship using (relationshipid)\n"+
+        "                                                      JOIN relntype using (relntypeid)\n"+
+        "                                                     where uuid = "+report_id+"\n"+
+        "                                                       and relntypeName = 'ArtefactReport')\n"+
+        "                             and uuid != "+report_id+")\n"+
+        "        ORDER BY uuid, attributename ASC)\n"+
+        "group by uuid\n"+
+        "order by valuetimestamp desc, uuid, attributename;");
+        artefact_id = artefactElement.get(0);
     }
     saveEntitiesToRel("ArtefactReport", artefact_id, report_id);
 }
