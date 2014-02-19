@@ -736,14 +736,14 @@
         <input ref="Title" faims_attribute_name="Title" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
           <label>Title</label>
         </input>
-        <select1 ref="Published" faims_attribute_name="Published" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false" appearance="full">
+        <select1 ref="Published" faims_attribute_name="Published" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false" appearance="full">
           <label>Published</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <input ref="Held_by" faims_attribute_name="Held by" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+        <input ref="Held_by" faims_attribute_name="Held by" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
           <label>Held By</label>
         </input>
         <input ref="Year_of_publication" faims_attribute_name="Year of publication" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
