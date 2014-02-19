@@ -398,20 +398,20 @@
       <description>Author</description>
     </property>
     <property name="Title" type="freetext">
-      <description>Title - alternate</description>
+      <description>Title</description>
     </property>
     <property name="Published" type="freetext" isIdentifier="true">
-      <description>published</description>
+      <description>Published</description>
       <lookup>
         <term HeuristID="1115-3595" StandardCode="">Published<description/></term>
         <term HeuristID="1115-3521" StandardCode="">Unpublished<description/></term>
       </lookup>
     </property>
     <property name="Held by" type="freetext">
-      <description>held by</description>
+      <description>Held by</description>
     </property>
-    <property name="Year of publication" type="freetext">
-      <description>Year of pubs</description>
+    <property name="Year of publication" type="measure">
+      <description>Year of publication</description>
     </property>
     <property name="Access requirements" type="blocktext">
       <description>Access requirements</description>

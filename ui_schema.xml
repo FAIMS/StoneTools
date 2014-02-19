@@ -216,23 +216,20 @@
       <bind nodeset="/faims/Artefact/Artefact_Nut_cracking_rock/Cupules_no_" type="decimal"/>
       <bind nodeset="/faims/Artefact/Artefact_Nut_cracking_rock/Cupule_no_2nd_side" type="decimal"/>
       <bind nodeset="/faims/Artefact/Artefact_Nut_cracking_rock/Notes_nut_cracking" type="string"/>
-      <bind nodeset="/faims/Artefact/Artefact_Pebble_attributes/Pebble_attributes_other" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Attributes_other/Notes_attributes" type="string"/>
-      <bind nodeset="/faims/Artefact/Artefact_Provenance/Contact_details" type="string"/>
-      <bind nodeset="/faims/Artefact/Artefact_Provenance/Other_information" type="string"/>
+
       <bind nodeset="/faims/Artefact/Artefact_Provenance/Location_description" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Provenance/Notes" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Provenance/Lat" type="decimal"/>
       <bind nodeset="/faims/Artefact/Artefact_Provenance/Long" type="decimal"/>
       <bind nodeset="/faims/Artefact/Artefact_Provenance/Error_in_metres" type="decimal"/>
+      <bind nodeset="/faims/Artefact/Artefact_Provenance/Contact_details" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Preservation/Storage" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Preservation/Preservation_notes" type="string"/>
-      <bind nodeset="/faims/Artefact/Artefact_Other_information/Report1" type="string"/>
       <bind nodeset="/faims/Collection/Collection_Location/Summary" type="string"/>
       <bind nodeset="/faims/Collection/Collection_Owner/Attitude_of_owner" type="string"/>
       <bind nodeset="/faims/Collection/Collection_Owner/Contact_details" type="string"/>
-      <bind nodeset="/faims/Report/Report_Additional/Abstract" type="string"/>
-      <bind nodeset="/faims/Report/Report_Additional/Short_summary" type="string"/>
+      <bind nodeset="faims/Report/Report/Year_of_publication" type="decimal"/>
     </model>
   </h:head>
   <h:body>
@@ -313,7 +310,6 @@
         <input ref="Other_ID" faims_attribute_name="Other ID" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Other_ID}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 ref="Artefact_Classification" faims_attribute_name="Artefact Classification" faims_certainty="false" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Artefact_Type}</label>
           <item>
@@ -321,7 +317,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Radiogroup-->
         <select1 ref="Completeness" faims_attribute_name="Completeness" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Completeness}</label>
           <item>
@@ -329,7 +324,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Dropdown-->
         <select1 ref="Raw_material" faims_attribute_name="Raw material" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Raw_material}</label>
           <item>
@@ -337,7 +331,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Radiogroup-->
         <select1 ref="Location_of_raw_material" faims_attribute_name="Location of raw material" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Is_the_raw_material}</label>
           <item>
@@ -381,7 +374,6 @@
       </group>
       <group ref="Artefact_Axe_attributes" faims_hidden="true">
         <label>{Axe_attributes}</label>
-        <!--We would like to see Dropdown-->
         <select1 ref="Axe_head_shape" faims_attribute_name="Axe head shape" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Axe_head_shape}</label>
           <item>
@@ -389,7 +381,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Dropdown-->
         <select1 ref="Ground_edge_" faims_attribute_name="Ground edge" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Ground_edge_}</label>
           <item>
@@ -403,7 +394,6 @@
         <input ref="Perimeter_ground_" faims_attribute_name="Perimeter ground %" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
           <label>{Perimeter_ground_%}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <input ref="Single_Waist_Width" faims_attribute_name="Waist 1 - width" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
           <label>Single Waist Width</label>
         </input>
@@ -428,7 +418,6 @@
         <input ref="Other" faims_attribute_name="Other" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Other}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 ref="Shape_" faims_attribute_name="Shape" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Shape_}</label>
           <item>
@@ -436,7 +425,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Radiogroup-->
         <select1 ref="Base" faims_attribute_name="Base" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Base}</label>
           <item>
@@ -444,7 +432,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Radiogroup-->
         <select1 ref="Symmetry" faims_attribute_name="Symmetry" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Symmetry}</label>
           <item>
@@ -494,7 +481,6 @@
         <input ref="Cupule_no_2nd_side" faims_attribute_name="Cupule no. 2nd side" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
           <label>{Cupules_2nd_surface}</label>
         </input>
-        <!--We would like to see Radiogroup-->
         <select1 ref="Portablility" faims_attribute_name="Portablility" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Portablility}</label>
           <item>
@@ -511,7 +497,6 @@
       </group>
       <group ref="Artefact_Pebble_attributes" faims_hidden="true">
         <label>{Pebble_attributes}</label>
-        <!--We would like to see Dropdown-->
         <select ref="Pebble_attributes" faims_attribute_name="Pebble attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Pebble_attributes}</label>
           <item>
@@ -525,7 +510,6 @@
       </group>
       <group ref="Artefact_Attributes_other" faims_hidden="true">
         <label>{Attributes_-_other}</label>
-        <!--We would like to see Dropdown-->
         <select ref="Attributes" faims_attribute_name="Attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Attributes}</label>
           <item>
@@ -548,7 +532,6 @@
         <input ref="Location_description" faims_attribute_name="Location description" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Location_description}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 ref="Locality" faims_attribute_name="Locality" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Locality}</label>
           <item>
@@ -556,7 +539,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Dropdown-->
         <select1 ref="Landform_where_found" faims_attribute_name="Landform where found" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Landform_where_found}</label>
           <item>
@@ -564,7 +546,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Dropdown-->
         <select1 ref="Geological_substrate" faims_attribute_name="Geological substrate" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Geological_substrate}</label>
           <item>
@@ -587,7 +568,6 @@
         <input ref="Contact_details" faims_attribute_name="Contact details" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Name}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 ref="Activity" faims_attribute_name="Activity" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Activity}</label>
           <item>
@@ -604,7 +584,6 @@
       </group>
       <group ref="Artefact_Preservation">
         <label>{Preservation}</label>
-        <!--We would like to see Radiogroup-->
         <select1 ref="Condition_of_object" faims_attribute_name="Condition of object" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Condition_of_object}</label>
           <item>
@@ -612,7 +591,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Dropdown-->
         <select1 ref="How_is_the_item_stored" faims_attribute_name="How is the item stored" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{How_is_the_item_stored}</label>
           <item>
@@ -687,7 +665,6 @@
         <input ref="Organisation" faims_attribute_name="Organisation" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Organisation}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 ref="Identity" faims_attribute_name="Identity" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Holder_identity}</label>
           <item>
@@ -769,7 +746,7 @@
         <input ref="Held_by" faims_attribute_name="Held by" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>Held By</label>
         </input>
-        <input ref="Year_of_publication" faims_attribute_name="Year of publication" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
+        <input ref="Year_of_publication" faims_attribute_name="Year of publication" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
           <label>Year of Publication</label>
         </input>
         <input ref="Access_requirements" faims_attribute_name="Access requirements" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">

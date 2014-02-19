@@ -11,29 +11,105 @@ setSyncEnabled(true);
 setFileSyncEnabled(true);
 
 showWarning("Thanks for trying this module!", "We have provided this module for Demonstration purposes only. You can customise the module yourself or we can help you. Contact info@fedarch.org for help.");
+
+/*** control ***/
 onEvent("control", "show", "refreshCollections()");
 onEvent("control", "show", "refreshArtefacts()");
 onEvent("control", "show", "refreshReports()");
+onEvent("control", "show", "loadCollectionAttributes()");
 onEvent("control", "show", "loadArtefactAttributes()");
 onEvent("control", "show", "loadReportAttributes()");
 
+/*** ArchEnt: Collection ***/
+onEvent("control/collection/CollectionList", "click", "loadCollection()");
+onEvent("control/collection/newCollection", "click", "newCollection()");
 
-/*** control ***/
+onEvent("Collection/Collection_GeneralInformation/Update", "delayclick", "saveCollection()");
 
-// onEvent("control/artefact", "show", "refreshArtefacts()");
+onEvent("Collection/Collection_Location/attachThumbnail_image", "click", "attachPictureTo(\"Collection/Collection_Location/Thumbnail_image\")");
+onEvent("Collection/Collection_Location/Update", "delayclick", "saveCollection()");
 
-/*** ArchEnt: Artefact ***/
-refreshArtefacts() {
-    populateList("control/artefact/ArtefactList", fetchEntityList("Artefact"));
+onEvent("Collection/Collection_Owner/Update", "delayclick", "saveCollection()");
+
+onEvent("Collection/Collection_Artefacts", "show", "updateAllCollection()");
+onEvent("Collection/Collection_Artefacts/newArtefact", "click", "newArtefact()");
+onEvent("Collection/Collection_Artefacts/ArtefactList", "click", "loadArtefact()");
+
+String collection_id = null;
+
+refreshCollections() {
+    populateList("control/collection/CollectionList", fetchEntityList("Collection"));
 }
 
+newCollection(){
+    collection_id = null;
+    newTabGroup("Collection");
+    loadCollectionAttributes();
+}
+loadCollection() {
+    collection_id = getListItemValue();
+    loadCollectionFrom(collection_id);
+}
+loadCollectionFrom(entid) {
+    collection_id = entid;
+    if (isNull(entid)) return;
+    showTabGroup("Collection", entid);    
+}
+
+saveCollection() {
+    if (false) { 
+        showWarning("Logic Error", "Cannot save record without id");
+        return;
+    }
+    if (!isNull(collection_id)) {
+        entity = fetchArchEnt(collection_id);
+    }
+    // first null is map data
+    saveTabGroup("Collection", collection_id, null, null, "collection_id = getLastSavedRecordId();");
+}
+ 
+loadCollectionAttributes() {
+    populateDropDown("Collection/Collection_GeneralInformation/Identity", makeVocab("Identity"));
+}
+
+updateAllCollection(){
+    if (!isNull(collection_id)){
+        artefactsInCollection = fetchAll("select uuid, aenttypename || ': ' || group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' | ') as response, valuetimestamp\n"+
+        "  FROM (  SELECT uuid, attributeid, vocabid, attributename, vocabname, measure, freetext, certainty, attributetype, valuetimestamp, aenttypename\n"+
+        "            FROM latestNonDeletedArchentIdentifiers\n"+
+        "           WHERE aenttypename = 'Artefact'\n"+
+        "             AND uuid in (select uuid\n"+
+        "                            FROM latestNonDeletedAentReln\n"+
+        "                           where relationshipid in (select relationshipid\n"+
+        "                                                      FROM latestNonDeletedAentReln\n"+
+        "                                                      JOIN relationship using (relationshipid)\n"+
+        "                                                      JOIN relntype using (relntypeid)\n"+
+        "                                                     where uuid = "+collection_id+"\n"+
+        "                                                       and relntypeName = 'CollectionArtefact')\n"+
+        "                             and uuid != "+collection_id+")\n"+
+        "        ORDER BY uuid, attributename ASC)\n"+
+        "group by uuid\n"+
+        "order by valuetimestamp desc, uuid, attributename;");
+        print(artefactsInCollection);
+        populateList("Collection/Collection_Artefacts/ArtefactList",  artefactsInCollection);
+    } else {
+        Object empty = fetchAll("select '', '';");
+        populateList("Collection/Collection_Artefacts/ArtefactList",  empty);
+
+    }
+}
+
+/*** ArchEnt: Artefact ***/
 onEvent("Artefact", "show", "hideTabs();showTabCustom();");
 onEvent("control/artefact/ArtefactList", "click", "loadArtefact()");
+
+onEvent("Artefact/Artefact_Description/Artefact_Classification", "click", "showTabCustom()");
 
 onEvent("Artefact/Artefact_Visual_interptretation/attachPhoto", "click", "attachPictureTo(\"Artefact/Artefact_Visual_interptretation/Photo\")");
 onEvent("Artefact/Artefact_Visual_interptretation/attachDrawing", "click", "attachFileTo(\"Artefact/Artefact_Visual_interptretation/Drawing\")");
 onEvent("Artefact/Artefact_Visual_interptretation/viewattached", "click", "viewArchEntAttachedFiles(artefact_id)");
 onEvent("Artefact/Artefact_Visual_interptretation/Update", "delayclick", "saveArtefact()");
+
 onEvent("Artefact/Artefact_Description/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Provenance/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Preservation/Update", "delayclick", "saveArtefact()");
@@ -43,11 +119,16 @@ onEvent("Artefact/Artefact_Axe_attributes/Update", "delayclick", "saveArtefact()
 onEvent("Artefact/Artefact_Pebble_attributes/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Attributes_other/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Nut_cracking_rock/Update", "delayclick", "saveArtefact()");
-onEvent("Artefact/Artefact_Description/Artefact_Classification", "click", "showTabCustom()");
 
-onEvent("Artefact/Artefact_Report/newReport", "click", "newReport()");
 onEvent("Artefact/Artefact_Report", "show", "updateAllArtefact()");
+onEvent("Artefact/Artefact_Report/newReport", "click", "newReport()");
 onEvent("Artefact/Artefact_Report/ReportList", "click", "loadReport()");
+
+String artefact_id = null;
+
+refreshArtefacts() {
+    populateList("control/artefact/ArtefactList", fetchEntityList("Artefact"));
+}
 
 hideTabs(){
     cancelTab("Artefact/Artefact_Pebble_attributes", false);
@@ -56,7 +137,6 @@ hideTabs(){
     cancelTab("Artefact/Artefact_Morah", false);
     cancelTab("Artefact/Artefact_Attributes_other", false);
     cancelTab("Artefact/Artefact_Nut_cracking_rock", false);
-
 }
 
 showTabCustom(){
@@ -82,32 +162,26 @@ showTabCustom(){
         showTab("Artefact/Artefact_Attributes_other");
         showTab("Artefact/Artefact_Nut_cracking_rock");
     }
-
+    showTab("Artefact/Artefact_Description");
 }
-
-String artefact_id = null;
 
 newArtefact(){
     artefact_id = null;
     newTabGroup("Artefact");
     saveCollection();
 }
+
 loadArtefact() {
-    //newArtefact();
     artefact_id = getListItemValue();
     loadArtefactFrom(artefact_id);
 }
 loadArtefactFrom(entid) {
-    
     artefact_id = entid;
     if (isNull(entid)) return;
     showTabGroup("Artefact", entid);
-    
-    //updateRelns();
 }
 
 saveArtefact() {
-    //todo - verify all required fields
     if (false){ 
         showWarning("Logic Error", "Cannot save record without id");
         return;
@@ -117,10 +191,9 @@ saveArtefact() {
         entity = fetchArchEnt(artefact_id);
     }
     // first null is map data
-    saveTabGroup("Artefact", artefact_id, null, null, "makeCollectionArtefactReln();");
-
-    
+    saveTabGroup("Artefact", artefact_id, null, null, "makeCollectionArtefactReln();");  
 }
+
 makeCollectionArtefactReln() {
     artefact_id = getLastSavedRecordId(); 
     if (isNull(artefact_id) || isNull(collection_id)) {
@@ -130,18 +203,7 @@ makeCollectionArtefactReln() {
     saveEntitiesToRel("CollectionArtefact", artefact_id, collection_id);
 }
 
-deleteArtefact(){
-    if (!isNull(artefact_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Artefact!", "reallyDeleteArtefact()", "doNotDeleteArtefact()");
-    }
-}
-reallyDeleteArtefact(){
-    deleteArchEnt(artefact_id);
-    cancelTabGroup("Artefact", false);
-}
-
 loadArtefactAttributes(){
-
     populateDropDown("Artefact/Artefact_Description/Artefact_Classification", makeVocab("Artefact Classification"));
     populateRadioGroup("Artefact/Artefact_Description/Completeness", makeVocab("Completeness"));
     populateDropDown("Artefact/Artefact_Description/Raw_material", makeVocab("Raw material"));
@@ -186,144 +248,39 @@ updateAllArtefact(){
         populateList("Artefact/Artefact_Report/ReportList",  empty);
 
     }
-//load related records ?
-}      
-
-/*** ArchEnt: Collection ***/
-// onEvent("control/collection", "show", "refreshCollections()");
-refreshCollections() {
-    populateList("control/collection/CollectionList", fetchEntityList("Collection"));
-}
-
-onEvent("control/collection/CollectionList", "click", "loadCollection()");
-onEvent("control/collection/newCollection", "click", "newCollection()");
-
-onEvent("Collection/Collection_Location/attachThumbnail_image", "click", "attachPictureTo(\"Collection/Collection_Location_/Thumbnail_image\")");
-onEvent("Collection/Collection_GeneralInformation/Update", "delayclick", "saveCollection()");
-onEvent("Collection/Collection_Location/Update", "delayclick", "saveCollection()");
-onEvent("Collection/Collection_Owner/Update", "delayclick", "saveCollection()");
-
-onEvent("Collection/Collection_Artefacts/newArtefact", "click", "newArtefact()");
-onEvent("Collection/Collection_Artefacts", "show", "updateAllCollection()");
-onEvent("Collection/Collection_Artefacts/ArtefactList", "click", "loadArtefact()");
-
-
-String collection_id = null;
-
-newCollection(){
-    collection_id = null;
-    newTabGroup("Collection");
-    loadCollectionAttributes();
-}
-loadCollection() {
-    //newCollection();
-    collection_id = getListItemValue();
-    loadCollectionFrom(collection_id);
-}
-loadCollectionFrom(entid) {
-    
-    collection_id = entid;
-    if (isNull(entid)) return;
-    showTabGroup("Collection", entid);
-    // Move this later
-    loadCollectionAttributes();
-    // updateAllCollection(); 
-    //updateRelns();
-}
-
-saveCollection() {
-    //todo - verify all required fields
-    if (false){ 
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    
-    if (!isNull(collection_id)) {
-        entity = fetchArchEnt(collection_id);
-    }
-    // first null is map data
-    saveTabGroup("Collection", collection_id, null, null, "collection_id = getLastSavedRecordId();");
-}
-
-deleteCollection(){
-    if (!isNull(collection_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Collection!", "reallyDeleteCollection()", "doNotDeleteCollection()");
-    }
-}
-reallyDeleteCollection(){
-    deleteArchEnt(collection_id);
-    cancelTabGroup("Collection", false);
-}
- 
-loadCollectionAttributes(){
-    populateDropDown("Collection/Collection_GeneralInformation/Identity", makeVocab("Identity"));
-}
-
-/*
-    TODO: load artefacts linked to the collection
-*/
-updateAllCollection(){
-    
-    if (!isNull(collection_id)){
-        artefactsInCollection = fetchAll("select uuid, aenttypename || ': ' || group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' | ') as response, valuetimestamp\n"+
-        "  FROM (  SELECT uuid, attributeid, vocabid, attributename, vocabname, measure, freetext, certainty, attributetype, valuetimestamp, aenttypename\n"+
-        "            FROM latestNonDeletedArchentIdentifiers\n"+
-        "           WHERE aenttypename = 'Artefact'\n"+
-        "             AND uuid in (select uuid\n"+
-        "                            FROM latestNonDeletedAentReln\n"+
-        "                           where relationshipid in (select relationshipid\n"+
-        "                                                      FROM latestNonDeletedAentReln\n"+
-        "                                                      JOIN relationship using (relationshipid)\n"+
-        "                                                      JOIN relntype using (relntypeid)\n"+
-        "                                                     where uuid = "+collection_id+"\n"+
-        "                                                       and relntypeName = 'CollectionArtefact')\n"+
-        "                             and uuid != "+collection_id+")\n"+
-        "        ORDER BY uuid, attributename ASC)\n"+
-        "group by uuid\n"+
-        "order by valuetimestamp desc, uuid, attributename;");
-        print(artefactsInCollection);
-        populateList("Collection/Collection_Artefacts/ArtefactList",  artefactsInCollection);
-    } else {
-        Object empty = fetchAll("select '', '';");
-        populateList("Collection/Collection_Artefacts/ArtefactList",  empty);
-
-    }
-//load related records ?
 }      
 
 /*** ArchEnt: Report ***/
-// onEvent("control/report", "show", "refreshReports()");
-refreshReports() {
-    populateList("control/report/ReportList", fetchEntityList("Report"));
-}
+
 
 onEvent("control/report/ReportList", "click", "loadReport()");
-
 onEvent("Report/Report/Update", "delayclick", "saveReport()");
 
 String report_id = null;
+
+refreshReports() {
+    populateList("control/report/ReportList", fetchEntityList("Report"));
+}
 
 newReport(){
     report_id = null;
     newTabGroup("Report");
     saveArtefact();
 }
+
 loadReport() {
-    //newReport();
     report_id = getListItemValue();
     loadReportFrom(report_id);
 }
+
 loadReportFrom(entid) {
-    
     report_id = entid;
     if (isNull(entid)) return;
     showTabGroup("Report", entid);
     updateAllReport(); 
-    //updateRelns();
 }
 
 saveReport() {
-    //todo - verify all required fields
     if (false){ 
         showWarning("Logic Error", "Cannot save record without id");
         return;
@@ -345,30 +302,14 @@ makeArtefactReportReln() {
     saveEntitiesToRel("ArtefactReport", artefact_id, report_id);
 }
 
-deleteReport(){
-    if (!isNull(report_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Report!", "reallyDeleteReport()", "doNotDeleteReport()");
-    }
-}
-reallyDeleteReport(){
-    deleteArchEnt(report_id);
-    cancelTabGroup("Report", false);
-}
-
 loadReportAttributes(){
     populateRadioGroup("Report/Report/Published", makeVocab("Published"));
-
 }
-
-updateAllReport(){
-//load related records ?
-}      
 
 // MISC FUNCTIONS    
 
 saveEntitiesToRel(type, entity1, entity2) {
     if (isNull(entity1) || isNull(entity2)) return;
-
     rel_id = saveRel(null, type, null, null);
     addReln(entity1, rel_id, null);
     addReln(entity2, rel_id, null);
@@ -392,8 +333,6 @@ populateListForUsers(){
 }
 
 populateListForUsers();
-
-
 
 String username = "";
 String device = "";
