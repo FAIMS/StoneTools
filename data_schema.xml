@@ -5,7 +5,10 @@
   <!-- ****** -->
 
   <RelationshipElement name="CollectionArtefact" type="bidirectional">
-    <description>Implements a 1:N between conllection and its artefact groups</description>
+    <description>Implements a 1:N between collection and its artefact</description>
+  </RelationshipElement>
+  <RelationshipElement name="ArtefactReport" type="bidirectional">
+    <description>Implements a 1:N between Artefacts and its reports</description>
   </RelationshipElement>
 
   <!--ARTEFACT-->
@@ -302,8 +305,14 @@
         <term HeuristID="1115-3463" StandardCode="">{Unknown}<description/></term>
       </lookup>
     </property>
-    <property name="cadestral reference information" type="freetext">
-      <description>Enter map reference information of any property unit which overlaps the site.</description>
+    <property name="Lat" type="measure">
+      <description>Latitude</description>
+    </property>
+    <property name="Long" type="measure">
+      <description>Longitude</description>
+    </property>
+    <property name="Error_in_metres" type="measure">
+      <description>Error in metres</description>
     </property>
     <property name="Notes" type="blocktext">
       <description>General notes</description>

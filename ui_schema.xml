@@ -48,7 +48,6 @@
               <Inventory_Number/>
               <Other_ID/>
               <Artefact_Classification/>
-              <Artefact_type_other/>
               <Completeness/>
               <Raw_material/>
               <Location_of_raw_material/>
@@ -62,17 +61,18 @@
               <Perimeter/>
               <Weight/>
               <Description_note/>
+              <Update/>
             </Artefact_Description>
             <Artefact_Axe_attributes>
               <Axe_head_shape/>
               <Ground_edge_/>
               <Ground_edge_length/>
               <Perimeter_ground_/>
-              <Waist/>
-              <Waist_1_width/>
-              <Waist_2_width/>
-              <Waist_3_width/>
+              <Single_Waist_Width/>
+              <Double_Waist_Width/>
+              <Triple_Waist_Width/>
               <Notes_on_axe_attributes/>
+              <Update/>
             </Artefact_Axe_attributes>
             <Artefact_Ooyurka_attributes>
               <Use_wear/>
@@ -84,26 +84,30 @@
               <Working_face_length_mm_/>
               <Body_length_mm_/>
               <Neck_width_at_mid_point_mm_/>
+              <Update/>
             </Artefact_Ooyurka_attributes>
             <Artefact_Morah>
               <Incised_surfaces/>
               <Incisions_no_/>
               <No_of_incisions_2nd_surface/>
               <Notes_morah/>
+              <Update/>
             </Artefact_Morah>
             <Artefact_Nut_cracking_rock>
               <Cupules_no_/>
               <Cupule_no_2nd_side/>
               <Portablility/>
               <Notes_nut_cracking/>
+              <Update/>
             </Artefact_Nut_cracking_rock>
             <Artefact_Pebble_attributes>
               <Pebble_attributes/>
-              <Pebble_attributes_other/>
+              <Update/>
             </Artefact_Pebble_attributes>
             <Artefact_Attributes_other>
               <Attributes/>
               <Notes_attributes/>
+              <Update/>
             </Artefact_Attributes_other>
             <Artefact_Provenance>
               <Name_of_locality_where_found/>
@@ -111,18 +115,26 @@
               <Locality/>
               <Landform_where_found/>
               <Geological_substrate/>
-              <cadestral_reference_information/>
+              <Lat/>
+              <Long/>
+              <Error_in_metres/>
               <Notes/>
               <Contact_details/>
               <Activity/>
               <Date_found/>
+              <Update/>
             </Artefact_Provenance>
             <Artefact_Preservation>
               <Condition_of_object/>
               <How_is_the_item_stored/>
               <Storage/>
               <Preservation_notes/>
+              <Update/>
             </Artefact_Preservation>
+            <Artefact_Report>
+              <newReport/>
+              <RerportList/>
+            </Artefact_Report>
             <Artefact_Visual_interptretation>
               <Photo/>
               <attachPhoto/>
@@ -130,7 +142,6 @@
               <attachDrawing/>
               <viewattached/>
               <Update/>
-              <Delete/>
             </Artefact_Visual_interptretation>
           </Artefact>
           <!--ArchEnt / Record Type: COLLECTION-->
@@ -201,9 +212,9 @@
       <bind nodeset="/faims/Artefact/Artefact_Description/Description_note" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Ground_edge_length" type="decimal"/>
       <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Perimeter_ground_" type="decimal"/>
-      <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Waist_1_width" type="decimal"/>
-      <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Waist_2_width" type="decimal"/>
-      <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Waist_3_width" type="decimal"/>
+      <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Single_Waist_Width" type="decimal"/>
+      <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Double_Waist_Width" type="decimal"/>
+      <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Triple_Waist_Width" type="decimal"/>
       <bind nodeset="/faims/Artefact/Artefact_Axe_attributes/Notes_on_axe_attributes" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Ooyurka_attributes/Use_wear" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Ooyurka_attributes/Other" type="string"/>
@@ -220,10 +231,13 @@
       <bind nodeset="/faims/Artefact/Artefact_Nut_cracking_rock/Notes_nut_cracking" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Pebble_attributes/Pebble_attributes_other" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Attributes_other/Notes_attributes" type="string"/>
-      <bind nodeset="/faims/Artefact/Artefact_Person_who_found_the_object/Contact_details" type="string"/>
-      <bind nodeset="/faims/Artefact/Artefact_Person_who_found_the_object/Other_information" type="string"/>
+      <bind nodeset="/faims/Artefact/Artefact_Provenance/Contact_details" type="string"/>
+      <bind nodeset="/faims/Artefact/Artefact_Provenance/Other_information" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Provenance/Location_description" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Provenance/Notes" type="string"/>
+      <bind nodeset="/faims/Artefact/Artefact_Provenance/Lat" type="decimal"/>
+      <bind nodeset="/faims/Artefact/Artefact_Provenance/Long" type="decimal"/>
+      <bind nodeset="/faims/Artefact/Artefact_Provenance/Error_in_metres" type="decimal"/>
       <bind nodeset="/faims/Artefact/Artefact_Preservation/Storage" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Preservation/Preservation_notes" type="string"/>
       <bind nodeset="/faims/Artefact/Artefact_Other_information/Report1" type="string"/>
@@ -255,7 +269,7 @@
       <label>{User_List}</label>
       <group ref="usertab" faims_scrollable="false">
         <label>{User_List}</label>
-        <select1 appearance="compact" scrollable="false" ref="users">
+        <select1 appearance="compact" ref="users">
           <label>{Users}: If you don't see your name, contact Alice</label>
           <item>
             <label>placeholder</label>
@@ -320,9 +334,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <input ref="Artefact_type_other" faims_attribute_name="Artefact type - other" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Artefact_type_-_other}</label>
-        </input>
         <!--We would like to see Radiogroup-->
         <select1 ref="Completeness" faims_attribute_name="Completeness" faims_certainty="true" appearance="full" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Completeness}</label>
@@ -377,6 +388,9 @@
         <input ref="Description_note" faims_attribute_name="Description - note" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Description_-_note}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Axe_attributes">
         <label>{Axe_attributes}</label>
@@ -403,25 +417,21 @@
           <label>{Perimeter_ground_%}</label>
         </input>
         <!--We would like to see Dropdown-->
-        <select1 ref="Waist" faims_attribute_name="Waist" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
-          <label>{Waist}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <input ref="Waist_1_width" faims_attribute_name="Waist 1 - width" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
-          <label>{Waist_1_-_width}</label>
+        <input ref="Single_Waist_Width" faims_attribute_name="Waist 1 - width" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
+          <label>Single Waist Width</label>
         </input>
-        <input ref="Waist_2_width" faims_attribute_name="Waist 2 - width" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
-          <label>{Waist_2_-_width}</label>
+        <input ref="Double_Waist_Width" faims_attribute_name="Waist 2 - width" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
+          <label>Double Waist Width</label>
         </input>
-        <input ref="Waist_3_width" faims_attribute_name="Waist 3 - width" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
-          <label>{Waist_3_-_width}</label>
+        <input ref="Triple_Waist_Width" faims_attribute_name="Waist 3 - width" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
+          <label>Triple Waist Width</label>
         </input>
         <input ref="Notes_on_axe_attributes" faims_attribute_name="Notes on axe attributes" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Notes_on_axe_attributes}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Ooyurka_attributes">
         <label>{Ooyurka_attributes}</label>
@@ -467,6 +477,9 @@
         <input ref="Neck_width_at_mid_point_mm_" faims_attribute_name="Neck width at mid point (mm)" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
           <label>{Neck_width_at_mid_point_(mm)}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Morah">
         <label>{Morah}</label>
@@ -482,6 +495,9 @@
         <input ref="Notes_morah" faims_attribute_name="Notes morah" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Notes_morah}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Nut_cracking_rock">
         <label>{Nut_cracking_rock}</label>
@@ -502,34 +518,40 @@
         <input ref="Notes_nut_cracking" faims_attribute_name="Notes nut cracking" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Notes_nut_cracking}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Pebble_attributes">
         <label>{Pebble_attributes}</label>
         <!--We would like to see Dropdown-->
-        <select1 ref="Pebble_attributes" faims_attribute_name="Pebble attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
+        <select ref="Pebble_attributes" faims_attribute_name="Pebble attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Pebble_attributes}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
-        </select1>
-        <input ref="Pebble_attributes_other" faims_attribute_name="Pebble attributes other" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Pebble_attributes_other}</label>
-        </input>
+        </select>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Attributes_other">
         <label>{Attributes_-_other}</label>
         <!--We would like to see Dropdown-->
-        <select1 ref="Attributes" faims_attribute_name="Attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
+        <select ref="Attributes" faims_attribute_name="Attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
           <label>{Attributes}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
-        </select1>
+        </select>
         <input ref="Notes_attributes" faims_attribute_name="Notes attributes" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Notes_attributes}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Provenance">
         <label>{Provenance}</label>
@@ -563,8 +585,14 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <input ref="cadestral_reference_information" faims_attribute_name="cadestral reference information" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
-          <label>{Cadastral_reference_information}</label>
+        <input ref="Lat" faims_attribute_name="Lat" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
+          <label>Latitude</label>
+        </input>
+        <input ref="Long" faims_attribute_name="Long" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
+          <label>Longitude</label>
+        </input>
+        <input ref="Error_in_metres" faims_attribute_name="Error_in_metres" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
+          <label>Error in metres</label>
         </input>
         <input ref="Notes" faims_attribute_name="Notes" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Notes}</label>
@@ -583,6 +611,9 @@
         <input ref="Date_found" faims_attribute_name="Date found" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Date_found}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
       </group>
       <group ref="Artefact_Preservation">
         <label>{Preservation}</label>
@@ -608,6 +639,22 @@
         <input ref="Preservation_notes" faims_attribute_name="Preservation notes" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Preservation_notes}</label>
         </input>
+        <trigger ref="Update">
+          <label>{Save_Record}</label>
+        </trigger>
+      </group>
+      <group ref="Artefact_Report" faims_scrollable="false">
+        <label>Reports</label>
+        <trigger ref="newReport">
+          <label>New Report</label>
+        </trigger>
+        <select1 appearance="compact" ref="ReportList" faims_certainty="false">
+          <label>Reports in collection:</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
       </group>
       <group ref="Artefact_Visual_interptretation">
         <label>{Visual,_interptretation}</label>
@@ -629,16 +676,13 @@
           </item>
         </select>
         <trigger ref="attachDrawing">
-          <label>Attach File</label>
+          <label>Attach Drawing</label>
         </trigger>
         <trigger ref="viewattached">
-          <label>View Attached Files</label>
+          <label>View Attached Drawings</label>
         </trigger>
         <trigger ref="Update">
           <label>{Save_Record}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>{Delete_Record}</label>
         </trigger>
       </group>
     </group>

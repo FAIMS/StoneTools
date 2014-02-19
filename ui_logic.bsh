@@ -31,7 +31,15 @@ onEvent("Artefact/Artefact_Visual_interptretation/attachPhoto", "click", "attach
 onEvent("Artefact/Artefact_Visual_interptretation/attachDrawing", "click", "attachFileTo(\"Artefact/Artefact_Visual_interptretation/Drawing\")");
 onEvent("Artefact/Artefact_Visual_interptretation/viewattached", "click", "viewArchEntAttachedFiles(entityId)");
 onEvent("Artefact/Artefact_Visual_interptretation/Update", "delayclick", "saveArtefact()");
-onEvent("Artefact/Artefact_Visual_interptretation/Delete", "delayclick", "deleteArtefact()");
+onEvent("Artefact/Artefact_Description/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Provenance/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Preservation/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Classification/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Ooyurka_attributes/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Axe_attributes/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Pebble_attributes/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Attributes_other/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Nut_cracking_rock/Update", "delayclick", "saveArtefact()");
 
 String artefact_id = null;
 
@@ -103,13 +111,12 @@ loadArtefactAttributes(){
     populateRadioGroup("Artefact/Artefact_Description/Location_of_raw_material", makeVocab("Location of raw material"));
     populateDropDown("Artefact/Artefact_Axe_attributes/Axe_head_shape", makeVocab("Axe head shape"));
     populateDropDown("Artefact/Artefact_Axe_attributes/Ground_edge_", makeVocab("Ground edge"));
-    populateDropDown("Artefact/Artefact_Axe_attributes/Waist", makeVocab("Waist"));
     populateDropDown("Artefact/Artefact_Ooyurka_attributes/Shape_", makeVocab("Shape"));
     populateRadioGroup("Artefact/Artefact_Ooyurka_attributes/Base", makeVocab("Base"));
     populateRadioGroup("Artefact/Artefact_Ooyurka_attributes/Symmetry", makeVocab("Symmetry"));
     populateRadioGroup("Artefact/Artefact_Nut_cracking_rock/Portablility", makeVocab("Portablility"));
-    populateDropDown("Artefact/Artefact_Pebble_attributes/Pebble_attributes", makeVocab("Pebble attributes"));
-    populateDropDown("Artefact/Artefact_Attributes_other/Attributes", makeVocab("Attributes"));
+    populateCheckBoxGroup("Artefact/Artefact_Pebble_attributes/Pebble_attributes", makeVocab("Pebble attributes"));
+    populateCheckBoxGroup("Artefact/Artefact_Attributes_other/Attributes", makeVocab("Attributes"));
     populateDropDown("Artefact/Artefact_Provenance/Activity", makeVocab("Activity"));
     populateDropDown("Artefact/Artefact_Provenance/Locality", makeVocab("Locality"));
     populateDropDown("Artefact/Artefact_Provenance/Landform_where_found", makeVocab("Landform where found"));
