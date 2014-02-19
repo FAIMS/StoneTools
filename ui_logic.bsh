@@ -29,17 +29,44 @@ onEvent("control/artefact/ArtefactList", "click", "loadArtefact()");
 
 onEvent("Artefact/Artefact_Visual_interptretation/attachPhoto", "click", "attachPictureTo(\"Artefact/Artefact_Visual_interptretation/Photo\")");
 onEvent("Artefact/Artefact_Visual_interptretation/attachDrawing", "click", "attachFileTo(\"Artefact/Artefact_Visual_interptretation/Drawing\")");
-onEvent("Artefact/Artefact_Visual_interptretation/viewattached", "click", "viewArchEntAttachedFiles(entityId)");
+onEvent("Artefact/Artefact_Visual_interptretation/viewattached", "click", "viewArchEntAttachedFiles(artefact_id)");
 onEvent("Artefact/Artefact_Visual_interptretation/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Description/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Provenance/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Preservation/Update", "delayclick", "saveArtefact()");
-onEvent("Artefact/Artefact_Classification/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Morah/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Ooyurka_attributes/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Axe_attributes/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Pebble_attributes/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Attributes_other/Update", "delayclick", "saveArtefact()");
 onEvent("Artefact/Artefact_Nut_cracking_rock/Update", "delayclick", "saveArtefact()");
+onEvent("Artefact/Artefact_Description/Artefact_Classification", "click", "showTabCustom()");
+
+showTabCustom(){
+    Object values = fetchOne("select vocabName from vocabulary where vocabid = '"+getFieldValue("Artefact/Artefact_Description/Artefact_Classification")+"';");   
+    String art_type = values.get(0);
+    if(art_type.equals("{Axe}")){
+        showTab("Artefact/Artefact_Axe_attributes");
+    } else if (art_type.equals("{Ooyurka}")) {
+        showTab("Artefact/Artefact_Ooyurka_attributes");
+    } else if ( art_type.equals("{Pebble}")){
+        showTab("Artefact/Artefact_Pebble_attributes");
+    } else if ( art_type.equals("{Morah}")){
+        showTab("Artefact/Artefact_Morah");
+    } else if ( art_type.equals("{Nut cracking rock}")){
+        showTab("Artefact/Artefact_Nut_cracking_rock");
+    } else if ( art_type.equals("{Other (describe)}")){
+        showTab("Artefact/Artefact_Attributes_other");
+    } else if ( art_type.equals("{Multiple Uses}")){
+        showTab("Artefact/Artefact_Pebble_attributes");
+        showTab("Artefact/Artefact_Axe_attributes");
+        showTab("Artefact/Artefact_Ooyurka_attributes");
+        showTab("Artefact/Artefact_Morah");
+        showTab("Artefact/Artefact_Attributes_other");
+        showTab("Artefact/Artefact_Nut_cracking_rock");
+    }
+
+}
 
 String artefact_id = null;
 

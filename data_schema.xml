@@ -36,6 +36,7 @@
         <term HeuristID="1115-3438" StandardCode="">{Other_(describe)}<description>Another tool not represented in this list</description></term>
         <term HeuristID="1115-3439" StandardCode="">{Unknown}<description>Unsure how to classify this object</description></term>
         <term HeuristID="1115-3440" StandardCode="">{Not_an_artefact_}<description>Not likely to be a cultural artefact</description></term>
+        <term HeuristID="1115-3440" StandardCode="">{Multiple_Uses_<description>Multiple Uses</description></term>
       </lookup>
     </property>
     <property name="Artefact type - other" type="freetext">

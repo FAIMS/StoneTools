@@ -131,10 +131,6 @@
               <Preservation_notes/>
               <Update/>
             </Artefact_Preservation>
-            <Artefact_Report>
-              <newReport/>
-              <RerportList/>
-            </Artefact_Report>
             <Artefact_Visual_interptretation>
               <Photo/>
               <attachPhoto/>
@@ -143,6 +139,10 @@
               <viewattached/>
               <Update/>
             </Artefact_Visual_interptretation>
+            <Artefact_Report>
+              <newReport/>
+              <ReportList/>
+            </Artefact_Report>
           </Artefact>
           <!--ArchEnt / Record Type: COLLECTION-->
           <Collection>
@@ -392,7 +392,7 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Artefact_Axe_attributes">
+      <group ref="Artefact_Axe_attributes" faims_hidden="true">
         <label>{Axe_attributes}</label>
         <!--We would like to see Dropdown-->
         <select1 ref="Axe_head_shape" faims_attribute_name="Axe head shape" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
@@ -433,7 +433,7 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Artefact_Ooyurka_attributes">
+      <group ref="Artefact_Ooyurka_attributes" faims_hidden="true" >
         <label>{Ooyurka_attributes}</label>
         <input ref="Use_wear" faims_attribute_name="Use wear" faims_certainty="true" faims_attribute_type="freetext" faims_read_only="false">
           <label>{Use_wear}</label>
@@ -481,7 +481,7 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Artefact_Morah">
+      <group ref="Artefact_Morah" faims_hidden="true">
         <label>{Morah}</label>
         <input ref="Incised_surfaces" faims_attribute_name="Incised surfaces" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
           <label>{Incised_surfaces}</label>
@@ -499,7 +499,7 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Artefact_Nut_cracking_rock">
+      <group ref="Artefact_Nut_cracking_rock" faims_hidden="true">
         <label>{Nut_cracking_rock}</label>
         <input ref="Cupules_no_" faims_attribute_name="Cupules (no.)" faims_certainty="true" faims_attribute_type="measure" faims_read_only="false">
           <label>{Cupules_1st_surface}</label>
@@ -522,7 +522,7 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Artefact_Pebble_attributes">
+      <group ref="Artefact_Pebble_attributes" faims_hidden="true">
         <label>{Pebble_attributes}</label>
         <!--We would like to see Dropdown-->
         <select ref="Pebble_attributes" faims_attribute_name="Pebble attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
@@ -536,7 +536,7 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Artefact_Attributes_other">
+      <group ref="Artefact_Attributes_other" faims_hidden="true">
         <label>{Attributes_-_other}</label>
         <!--We would like to see Dropdown-->
         <select ref="Attributes" faims_attribute_name="Attributes" faims_certainty="true" faims_attribute_type="vocab" faims_read_only="false">
@@ -643,19 +643,6 @@
           <label>{Save_Record}</label>
         </trigger>
       </group>
-      <group ref="Artefact_Report" faims_scrollable="false">
-        <label>Reports</label>
-        <trigger ref="newReport">
-          <label>New Report</label>
-        </trigger>
-        <select1 appearance="compact" ref="ReportList" faims_certainty="false">
-          <label>Reports in collection:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-      </group>
       <group ref="Artefact_Visual_interptretation">
         <label>{Visual,_interptretation}</label>
         <select ref="Photo" faims_attribute_name="Photo" faims_certainty="true" faims_attribute_type="freetext" faims_sync="true" type="camera" faims_annotation="false">
@@ -684,6 +671,19 @@
         <trigger ref="Update">
           <label>{Save_Record}</label>
         </trigger>
+      </group>
+      <group ref="Artefact_Report" faims_scrollable="false">
+        <label>Reports</label>
+        <trigger ref="newReport">
+          <label>New Report</label>
+        </trigger>
+        <select1 appearance="compact" ref="ReportList" faims_certainty="false">
+          <label>Reports in collection:</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
       </group>
     </group>
     <!--COLLECTION-->
