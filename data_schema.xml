@@ -23,7 +23,7 @@
     <property name="Other ID" type="freetext">
       <description>Other Identification</description>
     </property>
-    <property name="Artefact Classification" type="enum" isIdentifier="true">
+    <property name="Artefact Classification" type="enum">
       <description>Select the general category of artefact</description>
       <lookup>
         <term HeuristID="1115-3431" StandardCode="">{Pestle_other}<description>Pounding implement that is not a pebble</description></term>
