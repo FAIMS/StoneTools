@@ -24,7 +24,6 @@ onEvent("control", "show", "loadReportAttributes()");
 
 /*** ArchEnt: Artefact ***/
 refreshArtefacts() {
-    showToast("Fetching saved contexts...");
     populateList("control/artefact/ArtefactList", fetchEntityList("Artefact"));
 }
 
@@ -102,7 +101,6 @@ loadArtefactFrom(entid) {
     
     artefact_id = entid;
     if (isNull(entid)) return;
-    showToast(entid);
     showTabGroup("Artefact", entid);
     
     //updateRelns();
@@ -141,10 +139,7 @@ reallyDeleteArtefact(){
     deleteArchEnt(artefact_id);
     cancelTabGroup("Artefact", false);
 }
-doNotDeleteArtefact(){
-    showToast("Delete Cancelled.");
-}       
- 
+
 loadArtefactAttributes(){
 
     populateDropDown("Artefact/Artefact_Description/Artefact_Classification", makeVocab("Artefact Classification"));
@@ -197,7 +192,6 @@ updateAllArtefact(){
 /*** ArchEnt: Collection ***/
 // onEvent("control/collection", "show", "refreshCollections()");
 refreshCollections() {
-    showToast("Fetching saved contexts...");
     populateList("control/collection/CollectionList", fetchEntityList("Collection"));
 }
 
@@ -230,7 +224,6 @@ loadCollectionFrom(entid) {
     
     collection_id = entid;
     if (isNull(entid)) return;
-    showToast(entid);
     showTabGroup("Collection", entid);
     // Move this later
     loadCollectionAttributes();
@@ -261,9 +254,6 @@ reallyDeleteCollection(){
     deleteArchEnt(collection_id);
     cancelTabGroup("Collection", false);
 }
-doNotDeleteCollection(){
-    showToast("Delete Cancelled.");
-}       
  
 loadCollectionAttributes(){
     populateDropDown("Collection/Collection_GeneralInformation/Identity", makeVocab("Identity"));
@@ -304,7 +294,6 @@ updateAllCollection(){
 /*** ArchEnt: Report ***/
 // onEvent("control/report", "show", "refreshReports()");
 refreshReports() {
-    showToast("Fetching saved contexts...");
     populateList("control/report/ReportList", fetchEntityList("Report"));
 }
 
@@ -328,7 +317,6 @@ loadReportFrom(entid) {
     
     report_id = entid;
     if (isNull(entid)) return;
-    showToast(entid);
     showTabGroup("Report", entid);
     updateAllReport(); 
     //updateRelns();
@@ -366,10 +354,7 @@ reallyDeleteReport(){
     deleteArchEnt(report_id);
     cancelTabGroup("Report", false);
 }
-doNotDeleteReport(){
-    showToast("Delete Cancelled.");
-}       
- 
+
 loadReportAttributes(){
     populateRadioGroup("Report/Report/Published", makeVocab("Published"));
 
